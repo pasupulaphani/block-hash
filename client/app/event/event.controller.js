@@ -34,7 +34,7 @@ angular.module('dashboardAppApp')
 
 //////////
 
-  $scope.mytime = $scope.event.startTime || new Date();
+  $scope.mytime = 'Sun Apr 25 2015 13:00:00 GMT+0100 (BST)' || new Date();
 
   $scope.hstep = 1;
   $scope.mstep = 15;
@@ -65,7 +65,7 @@ angular.module('dashboardAppApp')
     $scope.mytime = null;
   };
 
-  $scope.mytime1 = new Date();
+  $scope.mytime1 = 'Sun Apr 25 2015 13:00:00 GMT+0100 (BST)' || new Date();
 
   $scope.hstep = 1;
   $scope.mstep = 15;
