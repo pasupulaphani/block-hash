@@ -9,6 +9,7 @@ var EventSchema = new Schema({
   desc: String,
   startTime: Date,
   endTime: Date,
+  address: String,
   locationLat: String,
   locationLng: String,
   active: Boolean,

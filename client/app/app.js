@@ -53,4 +53,8 @@ angular.module('dashboardAppApp', [
         }
       });
     });
+
+    $rootScope.isLoggedIn = Auth.isLoggedIn;
+    $rootScope.isAdmin = Auth.isAdmin;
+    $rootScope.getCurrentUser = Auth.getCurrentUser;
   });

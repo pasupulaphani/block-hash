@@ -14,49 +14,50 @@ var Event = require('./event.model');
 
 // Get list of Events
 exports.index = function(req, res) {
-  Event.find(function (err, Events) {
+  Event.find(function (err, events) {
     if(err) { return handleError(res, err); }
-    return res.json(200, Events);
+    return res.json(200, events);
   });
 };
 
 // Get a single Event
 exports.show = function(req, res) {
-  Event.findById(req.params.id, function (err, Event) {
+  Event.findById(req.params.id, function (err, event) {
     if(err) { return handleError(res, err); }
-    if(!Event) { return res.send(404); }
-    return res.json(Event);
+    if(!event) { return res.send(404); }
+    return res.json(event);
   });
 };
 
 // Creates a new Event in the DB.
 exports.create = function(req, res) {
-  Event.create(req.body, function(err, Event) {
+  console.log(req.body)
+  Event.create(req.body, function(err, event) {
     if(err) { return handleError(res, err); }
-    return res.json(201, Event);
+    return res.json(201, event);
   });
 };
 
 // Updates an existing Event in the DB.
 exports.update = function(req, res) {
   if(req.body._id) { delete req.body._id; }
-  Event.findById(req.params.id, function (err, Event) {
+  Event.findById(req.params.id, function (err, event) {
     if (err) { return handleError(res, err); }
-    if(!Event) { return res.send(404); }
-    var updated = _.merge(Event, req.body);
+    if(!event) { return res.send(404); }
+    var updated = _.merge(event, req.body);
     updated.save(function (err) {
       if (err) { return handleError(res, err); }
-      return res.json(200, Event);
+      return res.json(200, event);
     });
   });
 };
 
 // Deletes a Event from the DB.
 exports.destroy = function(req, res) {
-  Event.findById(req.params.id, function (err, Event) {
+  Event.findById(req.params.id, function (err, event) {
     if(err) { return handleError(res, err); }
-    if(!Event) { return res.send(404); }
-    Event.remove(function(err) {
+    if(!event) { return res.send(404); }
+    event.remove(function(err) {
       if(err) { return handleError(res, err); }
       return res.send(204);
     });
