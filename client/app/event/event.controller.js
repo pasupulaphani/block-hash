@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('dashboardAppApp')
-  .controller('EventCtrl', function ($scope, $http, $routeParams, $location, socket) {
+  .controller('EventCtrl', function ($scope, $http, $routeParams, $location, $log, socket) {
     $scope.event = {};
 
     var _id = $routeParams._id;
@@ -21,7 +21,7 @@ angular.module('dashboardAppApp')
     };
 
     $scope.updateEvent = function() {
-      $http.patch('/api/events/' + _id, $scope.event );
+      $http.put('/api/events/' + _id, $scope.event );
     };
 
     $scope.deleteEvent = function(event) {
@@ -31,4 +31,79 @@ angular.module('dashboardAppApp')
     $scope.$on('$destroy', function () {
       socket.unsyncUpdates('event');
     });
+
+//////////
+
+  $scope.mytime = $scope.event.startTime || new Date();
+
+  $scope.hstep = 1;
+  $scope.mstep = 15;
+
+  $scope.options = {
+    hstep: [1, 2, 3],
+    mstep: [1, 5, 10, 15, 25, 30]
+  };
+
+  $scope.ismeridian = true;
+  $scope.toggleMode = function() {
+    $scope.ismeridian = ! $scope.ismeridian;
+  };
+
+  $scope.update = function() {
+    var d = $scope.event.startTime || new Date();
+    d.setHours( 14 );
+    d.setMinutes( 0 );
+    $scope.mytime = d;
+  };
+
+  $scope.changed = function () {
+    $log.log('Time changed to: ' + $scope.mytime);
+    $scope.event.startTime = $scope.mytime;
+  };
+
+  $scope.clear = function() {
+    $scope.mytime = null;
+  };
+
+  $scope.mytime1 = new Date();
+
+  $scope.hstep = 1;
+  $scope.mstep = 15;
+
+  $scope.options = {
+    hstep: [1, 2, 3],
+    mstep: [1, 5, 10, 15, 25, 30]
+  };
+
+  $scope.ismeridian = true;
+  $scope.toggleMode = function() {
+    $scope.ismeridian = ! $scope.ismeridian;
+  };
+
+  $scope.update = function() {
+    var d = new Date();
+    d.setHours( 14 );
+    d.setMinutes( 0 );
+    $scope.mytime1 = d;
+  };
+
+  $scope.changed1 = function () {
+    $log.log('Time changed to: ' + $scope.mytime1);
+  };
+
+  $scope.clear = function() {
+    $scope.mytime1 = null;
+  };
+
+  $scope.get_venue_map = function () {
+
+    var center = $scope.locationLat + ',' + $scope.locationLng
+    var width = data.width
+    var height = 120
+    var zoom = 17
+    // var color = "red"
+    // var icon = encodeURI("/assets/images/location_marker.png")
+    // return "http://maps.googleapis.com/maps/api/staticmap?center=#{center}&zoom=#{zoom}&size=#{width}x#{data.height}&maptype=roadmap&markers=icon:#{icon}%7C#{center}"
+  }
+
   });

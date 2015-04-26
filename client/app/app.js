@@ -6,7 +6,8 @@ angular.module('dashboardAppApp', [
   'ngSanitize',
   'ngRoute',
   'btford.socket-io',
-  'ui.bootstrap'
+  'ui.bootstrap',
+  'ui.date'
 ])
   .config(function ($routeProvider, $locationProvider, $httpProvider) {
     $routeProvider

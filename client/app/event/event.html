@@ -23,15 +23,18 @@
     </div>
     <div class="form-group">
       <label>Starting Time</label>
-      <input type="text" class="form-control" placeholder="" ng-model="event.startTime">
+      <input type="text" class="form-control" placeholder="" ui-date ng-model="event.startTime">
+      <timepicker ng-model="mytime" ng-change="changed()" hour-step="hstep" minute-step="mstep" show-meridian="ismeridian"></timepicker>
     </div>
     <div class="form-group">
       <label>Closing Time</label>
-      <input type="text" class="form-control" placeholder="" ng-model="event.endTime">
+      <input type="text" class="form-control" placeholder="" ui-date ng-model="event.endTime">
+      <timepicker ng-model="mytime1" ng-change="changed1()" hour-step="hstep" minute-step="mstep" show-meridian="ismeridian"></timepicker>
     </div>
     <div class="form-group">
       <label>Location</label>
       <input type="text" class="form-control" placeholder="" ng-model="event.address">
+      <img class="venue-image" ng-click="open_external_map(venue.lat, venue.lng)" src="http://maps.googleapis.com/maps/api/staticmap?center=51.5110334422539,-0.129004630975446&amp;zoom=17&amp;size=1301x120&amp;maptype=roadmap&amp;markers=icon:http://s3-eu-west-1.amazonaws.com/bubblo-assets/location_marker.png%7C51.5110334422539,-0.129004630975446">
     </div>
     <div class="form-group">
       <label>Description</label>
@@ -41,7 +44,7 @@
     <button ng-show="!to_create" class="btn btn-default" ng-click="updateEvent()">Update</button>
   </form>
 </div>
-
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css">
 <footer class="footer">
   <div class="container">
       <p>
