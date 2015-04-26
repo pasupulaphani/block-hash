@@ -98,12 +98,19 @@ angular.module('dashboardAppApp')
   $scope.get_venue_map = function () {
 
     var center = $scope.locationLat + ',' + $scope.locationLng
+    var center = '51.5084796,-0.059135200000014265'
     var width = data.width
     var height = 120
     var zoom = 17
-    // var color = "red"
-    // var icon = encodeURI("/assets/images/location_marker.png")
-    // return "http://maps.googleapis.com/maps/api/staticmap?center=#{center}&zoom=#{zoom}&size=#{width}x#{data.height}&maptype=roadmap&markers=icon:#{icon}%7C#{center}"
+    var color = "red"
+    var icon = encodeURI("/assets/images/location_marker.png")
+
+    var url = "http://maps.googleapis.com/maps/api/staticmap?maptype=roadmap"
+    url += "&center=" + center
+    url += "&zoom=" + zoom
+    url += "&ize=" + (width * height)
+    url += "&markers=" + icon + '%7C#' + center
+    return url
   }
 
   });

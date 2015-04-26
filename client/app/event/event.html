@@ -33,8 +33,13 @@
     </div>
     <div class="form-group">
       <label>Location</label>
-      <input type="text" class="form-control" placeholder="" ng-model="event.address">
-      <img class="venue-image" ng-click="open_external_map(venue.lat, venue.lng)" src="http://maps.googleapis.com/maps/api/staticmap?center=51.5110334422539,-0.129004630975446&amp;zoom=17&amp;size=1301x120&amp;maptype=roadmap&amp;markers=icon:http://s3-eu-west-1.amazonaws.com/bubblo-assets/location_marker.png%7C51.5110334422539,-0.129004630975446">
+      <input type="text" class="form-control" placeholder="" ng-model="event.address"><!-- 
+      <input type="text" class="form-control" placeholder="Lat" ng-model="event.locationLat">
+      <input type="text" class="form-control" placeholder="Lng" ng-model="event.locationLng"> -->
+      <br />
+      <img class="venue-image" ng-click="open_external_map(venue.lat, venue.lng)" src="http://maps.googleapis.com/maps/api/staticmap?center=51.5084796,-0.059135200000014265&amp;zoom=14&amp;size=501x120&amp;maptype=roadmap&amp;markers=icon:http://s3-eu-west-1.amazonaws.com/bubblo-assets/location_marker.png%7C51.5084796,-0.059135200000014265">
+      <!-- <img class="venue-image" ng-click="open_external_map(venue.lat, venue.lng)" src="{{get_venue_map()}}"> -->
+      
     </div>
     <div class="form-group">
       <label>Description</label>
