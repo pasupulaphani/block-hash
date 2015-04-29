@@ -23,12 +23,29 @@
       <link rel="stylesheet" href="app/account/login/login.css">
       <link rel="stylesheet" href="app/admin/admin.css">
       <link rel="stylesheet" href="app/app.css">
+      <link rel="stylesheet" href="app/bids/participant.css">
       <link rel="stylesheet" href="app/event/event.css">
       <link rel="stylesheet" href="app/main/main.css">
       <link rel="stylesheet" href="app/participant/participant.css">
+      <link rel="stylesheet" href="app/winner/event.css">
       <link rel="stylesheet" href="components/modal/modal.css">
       <!-- endinjector -->
     <!-- endbuild -->
+  <script src="//js.pusher.com/2.2/pusher.min.js"></script>
+  <script>
+    // Enable pusher logging - don't include this in production
+    Pusher.log = function(message) {
+      if (window.console && window.console.log) {
+        window.console.log(message);
+      }
+    };
+
+    var pusher = new Pusher('9974bb74457b357b7d10');
+    var channel = pusher.subscribe('test_channel');
+    channel.bind('my_event', function(data) {
+      alert(data.message);
+    });
+  </script>
   </head>
   <body ng-app="dashboardAppApp">
     <!--[if lt IE 7]>
@@ -79,6 +96,8 @@
           <script src="app/account/signup/signup.controller.js"></script>
           <script src="app/admin/admin.controller.js"></script>
           <script src="app/admin/admin.js"></script>
+          <script src="app/bids/participant.controller.js"></script>
+          <script src="app/bids/participant.js"></script>
           <script src="app/event/event.controller.js"></script>
           <script src="app/event/event.js"></script>
           <script src="app/main/main.controller.js"></script>

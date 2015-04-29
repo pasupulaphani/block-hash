@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('dashboardAppApp')
-  .controller('EventCtrl', function ($scope, $http, $routeParams, $location, $log, socket) {
+  .controller('EventCtrl', function ($scope, $http, $routeParams, $location, $log, socket, $window) {
     $scope.event = {};
 
     var _id = $routeParams._id;
@@ -113,4 +113,7 @@ angular.module('dashboardAppApp')
     return url
   }
 
+    $scope.loginOauth = function(provider) {
+      $window.location.href = '/auth/' + provider;
+    };
   });

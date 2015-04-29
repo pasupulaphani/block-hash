@@ -11,6 +11,18 @@ var express = require('express');
 var mongoose = require('mongoose');
 var config = require('./config/environment');
 
+var Pusher = require('pusher');
+
+var pusher = new Pusher({
+  appId: '117384',
+  key: '9974bb74457b357b7d10',
+  secret: 'f2230b3376e566f5b809'
+});
+
+pusher.trigger('test_channel', 'my_event', {
+  "message": "hello world"
+});
+
 // Connect to database
 mongoose.connect(config.mongo.uri, config.mongo.options);
 
